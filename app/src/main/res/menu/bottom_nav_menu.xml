@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/navigation_recipe"
+        android:icon="@drawable/recipe"
+        android:title="@string/nav_recipe_title" />
+
+    <item
+        android:id="@+id/navigation_meal_planner"
+        android:icon="@drawable/mealplanner"
+        android:title="@string/nav_meal_planner_title" />
+
+    <item
+        android:id="@+id/navigation_blogs"
+        android:icon="@drawable/blog"
+        android:title="@string/nav_blog_title" />
+
+</menu>
