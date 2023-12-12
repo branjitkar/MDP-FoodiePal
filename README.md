@@ -1,0 +1,2 @@
+# FoodiePal App screenshots
+
