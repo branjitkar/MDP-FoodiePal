@@ -87,7 +87,7 @@ class BlogFragment : Fragment() {
                 content
             )
 
-            blogList.add(newBlog)
+            blogList.add(0, newBlog)
             blogAdapter.notifyDataSetChanged()
             dialog.dismiss()
 
