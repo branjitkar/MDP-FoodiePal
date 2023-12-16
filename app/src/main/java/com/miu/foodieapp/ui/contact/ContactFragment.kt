@@ -35,7 +35,8 @@ class ContactFragment : Fragment() {
     }
 
     private fun onEmailClicked() {
-        val uri = Uri.parse("mailto:${R.string.contact_email}")
+        val emailId = getString(R.string.contact_email)
+        val uri = Uri.parse("mailto:$emailId")
         val emailIntent = Intent(Intent.ACTION_SENDTO, uri)
         emailIntent.putExtra(Intent.EXTRA_SUBJECT, "FoodiePal: Query from contact")
 //        if (emailIntent.resolveActivity(requireContext().packageManager) != null) {
