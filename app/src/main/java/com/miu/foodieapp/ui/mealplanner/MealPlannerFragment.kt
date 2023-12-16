@@ -14,11 +14,15 @@ import com.miu.foodieapp.R
 import com.miu.foodieapp.adapter.MealPlanAdapter
 import com.miu.foodieapp.databinding.FragmentMealPlannerBinding
 import com.miu.foodieapp.model.MealPlan
+import java.text.SimpleDateFormat
 import java.time.DayOfWeek
 import java.time.Instant
 import java.time.LocalDate
 import java.time.ZoneId
 import java.time.temporal.TemporalAdjusters
+import java.util.Calendar
+import java.util.Date
+import java.util.Locale
 
 class MealPlannerFragment : Fragment() {
 
@@ -76,6 +80,12 @@ class MealPlannerFragment : Fragment() {
         addMealPlanFormBuilder.setTitle("Add new meal plan")
         val addMealPlanFormView = layoutInflater.inflate(R.layout.add_meal_plan_form, null)
         addMealPlanFormBuilder.setView(addMealPlanFormView)
+        val calendarView = addMealPlanFormView.findViewById<CalendarView>(R.id.addMealPlanCalendarView)
+        var selectedDate = LocalDate.now()
+
+        calendarView.setOnDateChangeListener { _, year, month, dayOfMonth ->
+            selectedDate = LocalDate.of(year, month + 1, dayOfMonth)
+        }
 
         addMealPlanFormBuilder.setNegativeButton("Cancel") { dialog, _ ->
             dialog.dismiss()
@@ -85,11 +95,6 @@ class MealPlannerFragment : Fragment() {
             val breakfast = addMealPlanFormView.findViewById<EditText>(R.id.addMealPlanBreakfast).text.toString()
             val lunch = addMealPlanFormView.findViewById<EditText>(R.id.addMealPlanLunch).text.toString()
             val dinner = addMealPlanFormView.findViewById<EditText>(R.id.addMealPlanDinner).text.toString()
-
-            val selectedDateMillis = addMealPlanFormView.findViewById<CalendarView>(R.id.addMealPlanCalendarView).date
-            val selectedDate = Instant.ofEpochMilli(selectedDateMillis)
-                .atZone(ZoneId.systemDefault())
-                .toLocalDate()
 
             mealPlanList.add(MealPlan(
                 breakfast,
