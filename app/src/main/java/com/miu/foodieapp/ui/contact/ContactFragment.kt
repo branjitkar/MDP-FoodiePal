@@ -28,13 +28,10 @@ class ContactFragment : Fragment() {
     }
 
     private fun onPhoneClicked() {
-        val uri = Uri.parse("tel:${R.string.contact_phone}")
+        val phoneNumber = getString(R.string.contact_phone)
+        val uri = Uri.parse("tel:$phoneNumber")
         val phoneIntent = Intent(Intent.ACTION_DIAL, uri)
-//        if (phoneIntent.resolveActivity(requireContext().packageManager) != null) {
-            startActivity(phoneIntent)
-//        } else{
-//            Toast.makeText(requireContext(), "Phone not available", Toast.LENGTH_LONG).show()
-//        }
+        startActivity(phoneIntent)
     }
 
     private fun onEmailClicked() {
